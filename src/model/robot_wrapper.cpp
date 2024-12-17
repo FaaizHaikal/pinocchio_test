@@ -28,7 +28,7 @@ void RobotWrapper::update_imu_link(double roll, double pitch, double yaw)
   data.oMi[model.getFrameId("imu_link")] = imu_pose;
 
   pinocchio::updateFramePlacements(model, data);
-} // namespace pinocchio_test
+}
 
 void RobotWrapper::reset_joints()
 {

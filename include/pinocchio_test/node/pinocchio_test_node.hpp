@@ -22,8 +22,8 @@ public:
   void publish_robot_state();
 
 private:
-  rclcpp::Node::SharedPtr node_;
-  std::shared_ptr<RobotWrapper> robot_wrapper_;
+  rclcpp::Node::SharedPtr node;
+  std::shared_ptr<RobotWrapper> robot_wrapper;
   rclcpp::Subscription<CurrentJoints>::SharedPtr current_joints_subscriber;
   rclcpp::Subscription<KanseiStatus>::SharedPtr kansei_status_subscriber;
 

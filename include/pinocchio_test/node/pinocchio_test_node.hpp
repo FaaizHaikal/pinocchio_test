@@ -1,12 +1,14 @@
 #ifndef PINOCCHIO_TEST__NODE__PINOCCHIO_TEST_NODE_HPP_
 #define PINOCCHIO_TEST__NODE__PINOCCHIO_TEST_NODE_HPP_
 
+#include <tf2_ros/transform_broadcaster.h>
+
 #include <memory>
 #include <rclcpp/rclcpp.hpp>
 
-#include "tachimawari_interfaces/msg/current_joints.hpp"
 #include "kansei_interfaces/msg/status.hpp"
 #include "pinocchio_test/model/robot_wrapper.hpp"
+#include "tachimawari_interfaces/msg/current_joints.hpp"
 
 namespace pinocchio_test
 {
@@ -23,10 +25,12 @@ public:
 
 private:
   rclcpp::Node::SharedPtr node;
-  std::shared_ptr<RobotWrapper> robot_wrapper;
+  rclcpp::TimerBase::SharedPtr node_timer;
   rclcpp::Subscription<CurrentJoints>::SharedPtr current_joints_subscriber;
   rclcpp::Subscription<KanseiStatus>::SharedPtr kansei_status_subscriber;
+  std::shared_ptr<tf2_ros::TransformBroadcaster> tf_broadcaster;
 
+  std::shared_ptr<RobotWrapper> robot_wrapper;
 };
 
 }  // namespace pinocchio_test
